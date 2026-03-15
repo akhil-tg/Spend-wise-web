@@ -81,11 +81,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const signInWithGoogle = async () => {
         if (!supabase) throw new Error('Supabase not configured');
 
+        // Use production URL for deployed app, localhost for development
+        const redirectUrl = process.env.NEXT_PUBLIC_APP_URL
+            ? `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`
+            : `${window.location.origin}/dashboard`;
+
         try {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: `${window.location.origin}/dashboard`
+                    redirectTo: redirectUrl
                 }
             });
 
