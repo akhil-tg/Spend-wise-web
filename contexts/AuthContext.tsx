@@ -81,8 +81,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const signInWithGoogle = async () => {
         if (!supabase) throw new Error('Supabase not configured');
 
-        // Hardcode Vercel URL for production
-        const redirectUrl = 'https://spend-wise-web.vercel.app/dashboard';
+        // Dynamically use the current origin so it works on both localhost and production
+        const redirectUrl = `${window.location.origin}/dashboard`;
 
         try {
             const { error } = await supabase.auth.signInWithOAuth({
