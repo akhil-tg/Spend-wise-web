@@ -98,42 +98,42 @@ export default function DashboardPage() {
 
             <Navbar />
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
                 {/* Welcome Header */}
-                <div className="mb-8 animate-slideDown">
-                    <h1 className="font-heading text-4xl font-bold text-white mb-2">
+                <div className="mb-6 sm:mb-8 animate-slideDown">
+                    <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
                         Welcome back, {userData.fullName.split(' ')[0]}! 👋
                     </h1>
-                    <p className="text-slate-400 mt-1 font-light text-lg">
+                    <p className="text-slate-400 mt-1 font-light text-sm sm:text-lg">
                         Here's an overview of your finances
                     </p>
                 </div>
 
                 {/* Exchange Rate */}
-                <div className="mb-8">
+                <div className="mb-6 sm:mb-8">
                     <ExchangeRateDisplay />
                 </div>
 
                 {/* Summary Cards */}
-                <div className="mb-8">
+                <div className="mb-6 sm:mb-8">
                     <SummaryCards transactions={transactions} />
                 </div>
 
                 {/* Analytics & Insights */}
-                <div className="mb-8 animate-slideUp stagger-4">
-                    <h2 className="font-heading text-xl font-semibold text-white mb-4">Financial Insights</h2>
+                <div className="mb-6 sm:mb-8 animate-slideUp stagger-4">
+                    <h2 className="font-heading text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Financial Insights</h2>
                     <Analytics transactions={transactions} />
                 </div>
 
                 {/* Transaction Form & Recent Transactions */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                     <div className="animate-slideUp stagger-2">
-                        <h2 className="font-heading text-xl font-semibold text-white mb-4">Add Transaction</h2>
+                        <h2 className="font-heading text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Add Transaction</h2>
                         <TransactionForm onSuccess={handleSuccess} transactions={transactions} />
                     </div>
 
                     <div className="animate-slideUp stagger-3">
-                        <h2 className="font-heading text-xl font-semibold text-white mb-4">Recent Transactions</h2>
+                        <h2 className="font-heading text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Recent Transactions</h2>
                         <TransactionList
                             transactions={transactions.slice(0, 5)}
                             onDelete={handleDelete}

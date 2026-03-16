@@ -77,18 +77,18 @@ export default function OnboardingForm() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center relative overflow-hidden p-4">
+        <div className="min-h-screen flex items-center justify-center relative overflow-hidden p-3 sm:p-4">
             {/* Full page loading overlay */}
             {loading && (
                 <div className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm animate-fadeIn">
-                    <div className="text-center">
-                        <div className="relative w-20 h-20 mx-auto mb-6">
+                    <div className="text-center px-4">
+                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6">
                             <div className="absolute inset-0 rounded-full border-4 border-amber-500/20"></div>
                             <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-amber-500 animate-spin"></div>
                             <div className="absolute inset-2 rounded-full border-4 border-transparent border-t-amber-300 animate-spin" style={{ animationDirection: 'reverse', animationDuration: '0.8s' }}></div>
                         </div>
-                        <p className="text-xl font-medium text-white animate-pulse">Setting up your account...</p>
-                        <p className="text-slate-400 mt-2">Almost there!</p>
+                        <p className="text-lg sm:text-xl font-medium text-white animate-pulse">Setting up your account...</p>
+                        <p className="text-slate-400 mt-1 sm:mt-2 text-sm sm:text-base">Almost there!</p>
                     </div>
                 </div>
             )}
@@ -98,13 +98,13 @@ export default function OnboardingForm() {
             <div className="absolute top-1/4 -left-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
-            <div className="w-full max-w-md relative z-10">
+            <div className="w-full max-w-md relative z-10 px-2">
                 {/* Logo with animation */}
-                <div className="text-center mb-8 animate-slideDown">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 mb-4 border border-amber-500/20 shadow-lg shadow-amber-500/10 animate-float">
+                <div className="text-center mb-6 sm:mb-8 animate-slideDown">
+                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 mb-3 sm:mb-4 border border-amber-500/20 shadow-lg shadow-amber-500/10 animate-float">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-10 h-10 text-amber-500"
+                            className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -117,34 +117,34 @@ export default function OnboardingForm() {
                             />
                         </svg>
                     </div>
-                    <h1 className="font-heading text-4xl font-bold text-white">
+                    <h1 className="font-heading text-3xl sm:text-4xl font-bold text-white">
                         Spend<span className="gradient-text">Wise</span>
                     </h1>
                 </div>
 
                 {/* Form Card with animation */}
-                <div className="glass-card p-8 animate-scaleIn">
-                    <h2 className="font-heading text-2xl font-semibold text-white mb-2">
+                <div className="glass-card p-5 sm:p-8 animate-scaleIn">
+                    <h2 className="font-heading text-xl sm:text-2xl font-semibold text-white mb-1 sm:mb-2">
                         Welcome! 👋
                     </h2>
-                    <p className="text-slate-400 mb-6">
+                    <p className="text-slate-400 mb-5 sm:mb-6 text-sm sm:text-base">
                         Let's set up your profile
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                         {/* Avatar Selection */}
                         <div className="text-center">
-                            <label className="block text-sm font-medium text-slate-300 mb-3">
+                            <label className="block text-sm font-medium text-slate-300 mb-2 sm:mb-3">
                                 Choose your avatar
                             </label>
-                            <div className="flex flex-wrap justify-center gap-2">
+                            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
                                 {AVATAR_OPTIONS.map((avatar) => (
                                     <button
                                         key={avatar}
                                         type="button"
                                         onClick={() => setSelectedAvatar(avatar)}
                                         className={`
-                                            w-12 h-12 text-2xl rounded-xl transition-all duration-200
+                                            w-10 h-10 sm:w-12 sm:h-12 text-xl sm:text-2xl rounded-xl transition-all duration-200
                                             ${selectedAvatar === avatar
                                                 ? 'bg-amber-500/30 border-2 border-amber-500 scale-110'
                                                 : 'bg-slate-700/50 border-2 border-transparent hover:border-slate-600'
@@ -193,7 +193,7 @@ export default function OnboardingForm() {
                 </div>
 
                 {/* Footer */}
-                <p className="text-center text-slate-500 text-sm mt-6 animate-fadeIn">
+                <p className="text-center text-slate-500 text-xs sm:text-sm mt-5 sm:mt-6 animate-fadeIn">
                     This helps us personalize your experience
                 </p>
             </div>

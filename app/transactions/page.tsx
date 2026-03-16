@@ -94,30 +94,30 @@ export default function TransactionsPage() {
 
             <Navbar />
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
                 {/* Header */}
-                <div className="mb-8 animate-slideDown">
-                    <h1 className="font-heading text-4xl font-bold text-white mb-2">
+                <div className="mb-6 sm:mb-8 animate-slideDown">
+                    <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
                         Transactions
                     </h1>
-                    <p className="text-slate-400 mt-1 font-light text-lg">
+                    <p className="text-slate-400 mt-1 font-light text-sm sm:text-lg">
                         Manage all your expenses, income, and savings
                     </p>
                 </div>
 
                 {/* Exchange Rate */}
-                <div className="mb-8 animate-slideUp stagger-2">
+                <div className="mb-6 sm:mb-8 animate-slideUp stagger-2">
                     <ExchangeRateDisplay />
                 </div>
 
                 {/* Transaction Form */}
-                <div className="mb-8 animate-slideUp stagger-3">
+                <div className="mb-6 sm:mb-8 animate-slideUp stagger-3">
                     <TransactionForm onSuccess={handleSuccess} transactions={transactions} />
                 </div>
 
                 {/* Transaction List */}
                 <div className="animate-slideUp stagger-4">
-                    <h2 className="font-heading text-xl font-semibold text-white mb-4">
+                    <h2 className="font-heading text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">
                         All Transactions ({transactions.length})
                     </h2>
                     <TransactionList

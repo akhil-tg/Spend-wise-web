@@ -42,19 +42,19 @@ export default function ShoppingPage() {
 
             <Navbar />
 
-            <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <main className="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
                 {/* Header */}
-                <div className="mb-8 animate-slideDown">
-                    <h1 className="font-heading text-4xl font-bold text-white mb-2">
+                <div className="mb-6 sm:mb-8 animate-slideDown">
+                    <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
                         Smart Shopping
                     </h1>
-                    <p className="text-slate-400 mt-1 font-light text-lg">
+                    <p className="text-slate-400 mt-1 font-light text-sm sm:text-lg">
                         Create your list, compare prices, and log expenses automatically
                     </p>
                 </div>
 
                 {/* Exchange Rate */}
-                <div className="mb-8 animate-slideUp stagger-2">
+                <div className="mb-6 sm:mb-8 animate-slideUp stagger-2">
                     <ExchangeRateDisplay />
                 </div>
 
@@ -64,11 +64,11 @@ export default function ShoppingPage() {
                 </div>
 
                 {/* Tips */}
-                <div className="mt-8 glass-card p-5 animate-slideUp stagger-4">
-                    <h3 className="text-white font-medium mb-3 flex items-center gap-2">
+                <div className="mt-6 sm:mt-8 glass-card p-4 sm:p-5 animate-slideUp stagger-4">
+                    <h3 className="text-white font-medium mb-2 sm:mb-3 flex items-center gap-2">
                         <span>💡</span> Shopping Tips
                     </h3>
-                    <ul className="text-sm text-slate-400 space-y-2">
+                    <ul className="text-xs sm:text-sm text-slate-400 space-y-1.5 sm:space-y-2">
                         <li className="flex items-start gap-2">
                             <span className="text-amber-500">•</span>
                             <span>Add items to your list before entering the store</span>

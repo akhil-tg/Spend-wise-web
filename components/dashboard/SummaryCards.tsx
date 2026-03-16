@@ -137,12 +137,12 @@ export default function SummaryCards({ transactions }: SummaryCardsProps): React
     ];
 
     return (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
             {cards.map((card, index) => (
                 <div
                     key={card.title}
                     className={`
-                        glass-card p-5 border ${card.borderColor} ${card.glowColor} hover-lift
+                        glass-card p-3 sm:p-5 border ${card.borderColor} ${card.glowColor} hover-lift
                         animate-scaleIn
                         ${card.isHighlighted ? 'ring-2 ring-amber-500/30' : ''}
                     `}
@@ -151,24 +151,24 @@ export default function SummaryCards({ transactions }: SummaryCardsProps): React
                         animationFillMode: 'both'
                     }}
                 >
-                    <div className="flex items-start justify-between mb-3">
-                        <div className={`p-2 rounded-lg bg-gradient-to-br ${card.bgGradient} border border-white/5`}>
+                    <div className="flex items-start justify-between mb-2 sm:mb-3">
+                        <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-br ${card.bgGradient} border border-white/5`}>
                             <div className={card.iconColor}>
                                 {card.icon}
                             </div>
                         </div>
                         {card.isHighlighted && (
-                            <span className="px-2 py-1 text-xs font-medium bg-amber-500/20 text-amber-400 rounded-full">
+                            <span className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium bg-amber-500/20 text-amber-400 rounded-full">
                                 LIVE
                             </span>
                         )}
                     </div>
                     <div>
-                        <p className="text-slate-400 text-xs font-medium mb-1">{card.title}</p>
-                        <p className={`text-2xl font-bold tracking-tight ${card.iconColor}`}>
+                        <p className="text-slate-400 text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1">{card.title}</p>
+                        <p className={`text-lg sm:text-2xl font-bold tracking-tight ${card.iconColor}`}>
                             {formatEUR(card.amountEUR)}
                         </p>
-                        <p className="text-xs text-slate-500 mt-1 font-light">
+                        <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1 font-light">
                             {formatINR(card.amountINR)}
                         </p>
                     </div>

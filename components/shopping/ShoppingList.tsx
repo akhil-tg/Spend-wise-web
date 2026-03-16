@@ -144,17 +144,17 @@ export default function ShoppingList() {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
             {/* Add Item Form */}
             <Card>
-                <form onSubmit={addItem} className="flex gap-3">
+                <form onSubmit={addItem} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <Input
                         placeholder="Enter item name (e.g., Milk, Rice)"
                         value={newItemName}
                         onChange={(e) => setNewItemName(e.target.value)}
                         className="flex-1"
                     />
-                    <Button type="submit" disabled={!newItemName.trim()}>
+                    <Button type="submit" disabled={!newItemName.trim()} className="w-full sm:w-auto">
                         Add
                     </Button>
                 </form>
@@ -162,34 +162,34 @@ export default function ShoppingList() {
 
             {/* Shopping List */}
             {items.length === 0 ? (
-                <Card className="text-center py-12">
+                <Card className="text-center py-8 sm:py-12">
                     <div className="text-slate-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
-                        <p className="text-lg font-medium">Your shopping list is empty</p>
-                        <p className="text-sm">Add items to start tracking</p>
+                        <p className="text-base sm:text-lg font-medium">Your shopping list is empty</p>
+                        <p className="text-xs sm:text-sm">Add items to start tracking</p>
                     </div>
                 </Card>
             ) : (
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                     {items.map((item) => (
                         <Card key={item.id} className="group">
-                            <div className="flex flex-col sm:flex-row gap-4">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                                 {/* Item Name */}
                                 <div className="flex-1 min-w-0">
                                     <input
                                         type="text"
                                         value={item.name}
                                         onChange={(e) => updateItem(item.id, 'name', e.target.value)}
-                                        className="w-full bg-transparent text-white font-medium border-b border-transparent focus:border-emerald-500 focus:outline-none pb-1"
+                                        className="w-full bg-transparent text-white font-medium border-b border-transparent focus:border-emerald-500 focus:outline-none pb-1 text-sm sm:text-base"
                                         placeholder="Item name"
                                     />
                                 </div>
 
                                 {/* Price & Quantity */}
-                                <div className="flex items-center gap-3">
-                                    <div className="flex items-center gap-2">
+                                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                                    <div className="flex items-center gap-1.5 sm:gap-2">
                                         <span className="text-slate-400 text-sm">€</span>
                                         <input
                                             type="number"
@@ -198,28 +198,28 @@ export default function ShoppingList() {
                                             placeholder="0.00"
                                             value={item.unitPriceEUR || ''}
                                             onChange={(e) => updateItem(item.id, 'unitPriceEUR', parseFloat(e.target.value) || 0)}
-                                            className="w-20 px-2 py-1.5 bg-slate-700/50 border border-slate-600 rounded text-white text-right focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                            className="w-16 sm:w-20 px-2 py-1.5 bg-slate-700/50 border border-slate-600 rounded text-white text-right focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
                                         />
                                     </div>
 
                                     <span className="text-slate-400">×</span>
 
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center gap-1.5 sm:gap-2">
                                         <input
                                             type="number"
                                             min="1"
                                             value={item.quantity}
                                             onChange={(e) => updateItem(item.id, 'quantity', parseInt(e.target.value) || 0)}
-                                            className="w-14 px-2 py-1.5 bg-slate-700/50 border border-slate-600 rounded text-white text-center focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                            className="w-12 sm:w-14 px-2 py-1.5 bg-slate-700/50 border border-slate-600 rounded text-white text-center focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
                                         />
                                     </div>
 
                                     {/* Line Total */}
-                                    <div className="min-w-[100px] text-right">
-                                        <div className="text-white font-medium">
+                                    <div className="min-w-[80px] sm:min-w-[100px] text-right">
+                                        <div className="text-sm sm:text-base text-white font-medium">
                                             {formatEUR(item.lineTotalEUR)}
                                         </div>
-                                        <div className="text-xs text-slate-400">
+                                        <div className="text-[10px] sm:text-xs text-slate-400">
                                             {formatINR(item.lineTotalINR)}
                                         </div>
                                     </div>
@@ -243,10 +243,10 @@ export default function ShoppingList() {
             {/* Total & Checkout */}
             {items.length > 0 && (
                 <Card className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border-emerald-500/30">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div>
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                        <div className="text-center sm:text-left">
                             <p className="text-slate-400 text-sm">Total</p>
-                            <div className="text-2xl font-bold text-white">{formatEUR(getTotal())}</div>
+                            <div className="text-xl sm:text-2xl font-bold text-white">{formatEUR(getTotal())}</div>
                             <div className="text-sm text-emerald-400">{formatINR(getTotalINR())}</div>
                         </div>
                         <Button
@@ -267,39 +267,39 @@ export default function ShoppingList() {
                 title="Confirm Checkout"
             >
                 <div className="space-y-4">
-                    <p className="text-slate-300">
+                    <p className="text-slate-300 text-sm">
                         This will log the following expense to your transaction history:
                     </p>
 
-                    <div className="bg-slate-700/30 rounded-lg p-4 max-h-48 overflow-y-auto">
+                    <div className="bg-slate-700/30 rounded-lg p-3 sm:p-4 max-h-40 sm:max-h-48 overflow-y-auto">
                         {items.filter(i => i.unitPriceEUR > 0).map(item => (
-                            <div key={item.id} className="flex justify-between py-2 border-b border-slate-600/50 last:border-0">
+                            <div key={item.id} className="flex justify-between py-1.5 sm:py-2 border-b border-slate-600/50 last:border-0 text-sm">
                                 <span className="text-white">{item.name} × {item.quantity}</span>
                                 <span className="text-slate-300">{formatEUR(item.lineTotalEUR)}</span>
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex justify-between items-center pt-4 border-t border-slate-600">
+                    <div className="flex justify-between items-center pt-3 sm:pt-4 border-t border-slate-600">
                         <span className="text-white font-medium">Total</span>
                         <div className="text-right">
-                            <div className="text-xl font-bold text-white">{formatEUR(getTotal())}</div>
+                            <div className="text-lg sm:text-xl font-bold text-white">{formatEUR(getTotal())}</div>
                             <div className="text-sm text-emerald-400">{formatINR(getTotalINR())}</div>
                         </div>
                     </div>
 
-                    <div className="flex gap-3 pt-2">
+                    <div className="flex gap-2 sm:gap-3 pt-2">
                         <Button
                             variant="outline"
                             onClick={() => setCheckoutModalOpen(false)}
-                            className="flex-1"
+                            className="flex-1 text-sm"
                         >
                             Cancel
                         </Button>
                         <Button
                             onClick={handleCheckout}
                             disabled={loading || getTotal() === 0}
-                            className="flex-1"
+                            className="flex-1 text-sm"
                         >
                             {loading ? 'Processing...' : 'Confirm & Log'}
                         </Button>

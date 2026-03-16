@@ -23,13 +23,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                     ref={ref}
                     id={id}
                     className={`
-                        w-full px-4 py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl 
-                        text-white placeholder-slate-500
+                        w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl 
+                        text-white placeholder-slate-500 text-base
                         focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
                         transition-all duration-200 hover:border-slate-500/50
                         ${error ? 'border-red-500/50 focus:ring-red-500/50 focus:border-red-500/50' : ''}
                         ${className}
                     `}
+                    style={{ fontSize: '16px' }}
                     {...props}
                 />
                 {error && (
