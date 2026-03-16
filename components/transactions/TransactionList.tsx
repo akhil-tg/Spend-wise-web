@@ -97,8 +97,8 @@ export default function TransactionList({ transactions, onDelete, onUpdate }: Tr
                                     </div>
                                 </div>
 
-                                {/* Action Buttons */}
-                                <div className="flex items-center gap-0.5 sm:gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                {/* Action Buttons - Always visible on mobile */}
+                                <div className="flex items-center gap-0.5 sm:gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                                     <button
                                         onClick={() => setEditingTransaction(transaction)}
                                         className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"

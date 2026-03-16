@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TransactionForm from '@/components/dashboard/TransactionForm';
 
 interface FloatingActionButtonProps {
@@ -10,22 +10,70 @@ interface FloatingActionButtonProps {
 
 export default function FloatingActionButton({ transactions = [], onSuccess }: FloatingActionButtonProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [isAtTop, setIsAtTop] = useState(true);
+    const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Show FAB when at top, hide when scrolling down (unless at bottom)
+            if (currentScrollY <= 100) {
+                setIsVisible(true);
+                setIsAtTop(true);
+            } else {
+                setIsAtTop(false);
+                // Show when scrolling up, hide when scrolling down
+                if (currentScrollY < lastScrollY) {
+                    setIsVisible(true);
+                } else {
+                    setIsVisible(false);
+                }
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        // Use timeout to debounce scroll events
+        const handleScrollWithTimeout = () => {
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+            scrollTimeoutRef.current = setTimeout(handleScroll, 10);
+        };
+
+        window.addEventListener('scroll', handleScrollWithTimeout, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScrollWithTimeout);
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+        };
+    }, [lastScrollY]);
 
     return (
         <>
             {/* Floating Action Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="
+                className={`
                     fixed bottom-20 right-4 z-30 md:hidden
                     w-14 h-14 rounded-full
                     bg-gradient-to-r from-amber-500 to-amber-600
                     text-white shadow-lg shadow-amber-500/30
                     flex items-center justify-center
                     hover:scale-110 active:scale-95
-                    transition-all duration-200
-                    animate-pulse-glow
-                "
+                    transition-all duration-300
+                    ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}
+                `}
+                style={{
+                    transitionProperty: 'transform, opacity, visibility',
+                    transitionDuration: '300ms',
+                    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
                 aria-label="Add Transaction"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
