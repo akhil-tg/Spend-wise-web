@@ -11,6 +11,8 @@ import SummaryCards from '@/components/dashboard/SummaryCards';
 import TransactionForm from '@/components/dashboard/TransactionForm';
 import TransactionList from '@/components/transactions/TransactionList';
 import Analytics from '@/components/dashboard/Analytics';
+import MobileNav from '@/components/ui/MobileNav';
+import FloatingActionButton from '@/components/ui/FloatingActionButton';
 
 export default function DashboardPage() {
     const { user, userData, loading } = useAuth();
@@ -90,7 +92,7 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="min-h-screen relative">
+        <div className="min-h-screen relative pb-20 md:pb-0">
             {/* Background gradient mesh */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
             <div className="absolute top-0 -left-40 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
@@ -98,7 +100,7 @@ export default function DashboardPage() {
 
             <Navbar />
 
-            <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
+            <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10 pb-24 md:pb-8">
                 {/* Welcome Header */}
                 <div className="mb-6 sm:mb-8 animate-slideDown">
                     <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
@@ -142,6 +144,15 @@ export default function DashboardPage() {
                     </div>
                 </div>
             </main>
+
+            {/* Mobile Navigation */}
+            <MobileNav />
+
+            {/* Floating Action Button for Quick Add */}
+            <FloatingActionButton
+                transactions={transactions}
+                onSuccess={handleSuccess}
+            />
         </div>
     );
 }

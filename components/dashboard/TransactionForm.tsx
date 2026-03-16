@@ -161,7 +161,8 @@ export default function TransactionForm({ onSuccess, transactions = [] }: Transa
                                 setCategory('');
                             }}
                             className={`
-                                flex-1 py-2 px-3 rounded-lg text-sm font-medium capitalize transition-all
+                                flex-1 py-2.5 sm:py-2 px-2 sm:px-3 rounded-lg text-sm font-medium capitalize transition-all
+                                min-h-[44px]
                                 ${type === t
                                     ? t === 'expense'
                                         ? 'bg-red-500/20 text-red-400 border border-red-500/30'

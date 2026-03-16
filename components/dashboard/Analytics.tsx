@@ -39,18 +39,18 @@ export default function Analytics({ transactions }: AnalyticsProps) {
     const budgetUsed = (totals.expense / monthlyBudget) * 100;
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
             {/* Budget Progress */}
-            <div className="glass-card p-6 border-amber-500/20">
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-heading text-lg font-semibold text-white">Monthly Budget</h3>
-                    <span className="text-sm text-slate-400">
+            <div className="glass-card p-4 sm:p-6 border-amber-500/20">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <h3 className="font-heading text-base sm:text-lg font-semibold text-white">Monthly Budget</h3>
+                    <span className="text-xs sm:text-sm text-slate-400">
                         {formatEUR(totals.expense)} / {formatEUR(monthlyBudget)}
                     </span>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="h-3 bg-slate-700/50 rounded-full overflow-hidden mb-2">
+                <div className="h-2.5 sm:h-3 bg-slate-700/50 rounded-full overflow-hidden mb-2">
                     <div
                         className={`h-full rounded-full transition-all duration-500 ${budgetUsed > 90 ? 'bg-red-500' :
                             budgetUsed > 70 ? 'bg-amber-500' :
@@ -60,7 +60,7 @@ export default function Analytics({ transactions }: AnalyticsProps) {
                     />
                 </div>
 
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs sm:text-sm">
                     <span className={budgetUsed > 100 ? 'text-red-400' : 'text-slate-400'}>
                         {budgetUsed.toFixed(0)}% used
                     </span>
@@ -71,7 +71,7 @@ export default function Analytics({ transactions }: AnalyticsProps) {
             </div>
 
             {/* Spending Insights Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4">
                 {/* Daily Average */}
                 <div className="glass-card p-4 border-slate-600/30">
                     <p className="text-slate-400 text-xs mb-1">Daily Average</p>
